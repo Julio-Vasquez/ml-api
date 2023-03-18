@@ -1,17 +1,15 @@
 import axios from './../axios'
 import { getHeader } from './header.util'
-import { IMutation, IQuery } from '../interfaces/api.interface'
-import { BASE_URL_CONST, TIMEOUT_CONST } from '../constants/api.constant'
+import { IMutation, IQuery } from '../../interfaces/api.interface'
 
-export const Query = async ({ params, url }: IQuery) => {
-    console.log(BASE_URL_CONST, TIMEOUT_CONST)
+export const Query = async ({ params = {}, url }: IQuery) => {
     const fetch = await axios.get(url, getHeader(params))
     const { data, status } = fetch
-    console.log(data, status)
-    console.log(fetch)
-    return data
+    return { data, status }
 }
 
-export const Mutation = ({ method, params, url }: IMutation) => {
-    console.log(axios[method](''), params, url)
+export const Mutation = async ({ method, params = {}, url, body }: IMutation) => {
+    const fetch = await axios[method](url, body, getHeader(params))
+    const { data, status, statusText } = fetch
+    return { data, status, statusText }
 }

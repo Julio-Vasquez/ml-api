@@ -1,5 +1,14 @@
-import { Express } from 'express'
+import { Express, Response, Request } from 'express'
+
+import { PORT } from './../constants/server.constant'
 
 const server = (app: Express) => {
-    app.listen(3000, () => {})
+    app.get('/', (_req: Request, res: Response) => {
+        res.send('root')
+    })
+    app.listen(PORT, () => {
+        console.log(`server running in port ${PORT}`)
+    })
 }
+
+export default server
