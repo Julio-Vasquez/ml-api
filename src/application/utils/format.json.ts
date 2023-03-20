@@ -1,5 +1,4 @@
 import { AllItems } from '../interfaces/all-items.interface'
-
 import { ItemDetail } from '../interfaces/item-detail.interface'
 
 const author = {
@@ -7,12 +6,30 @@ const author = {
     lastName: 'Vasquez',
 }
 
+export const getCategories = (data: any) => {
+    const categoriesFromAvailableFilters = data['available_filters'].find(
+        (item: any) => item.id === 'category'
+    )
+
+    if (categoriesFromAvailableFilters?.values) {
+        return categoriesFromAvailableFilters.values.map((item: any) => item.name)
+    }
+
+    const categoriesFromFilters = data['filters'].find(
+        (item: any) => item.id === 'category'
+    )
+
+    if (categoriesFromFilters?.values) {
+        return categoriesFromFilters.values.map((item: any) => item.name)
+    }
+
+    return []
+}
+
 export const formatAllItems = (data: any) => {
     const response: AllItems = {
         author,
-        categories: data['available_filters']?.[0]?.['values'].map(
-            (element: any) => element['name']
-        ),
+        categories: getCategories(data),
         item: data['results'].map((element: any) => ({
             id: element['id'],
             title: element['title'],

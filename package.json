@@ -2,7 +2,7 @@
   "name": "ml-api",
   "version": "0.0.1",
   "description": "Test Mercado Libre",
-  "main": "index.js",
+  "main": "main.js",
   "repository": "https://github.com/Julio-Vasquez/ml-api.git",
   "author": "Julio Vásquez",
   "license": "MIT",

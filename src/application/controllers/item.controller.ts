@@ -19,9 +19,7 @@ class ItemController {
 
         try {
             const { payload, statusCode } = await ItemService.getItems({ q })
-
             const response = formatAllItems(payload)
-
             res.status(statusCode).json(response)
         } catch (e) {
             next(e)
