@@ -4,5 +4,5 @@ import { Author } from './author.interface'
 export interface AllItems {
     author: Author
     categories: string[]
-    item: Item[]
+    items: Item[]
 }

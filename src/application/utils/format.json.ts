@@ -30,13 +30,13 @@ export const formatAllItems = (data: any) => {
     const response: AllItems = {
         author,
         categories: getCategories(data),
-        item: data['results'].map((element: any) => ({
+        items: data['results'].map((element: any) => ({
             id: element['id'],
             title: element['title'],
             price: {
                 amount: Math.trunc(element['price']),
                 currency: element['currency_id'],
-                decimals: element['price'].toString().split('.')?.[1],
+                decimals: +element['price'].toString().split('.')?.[1],
             },
             picture: element['thumbnail'],
             condition: element['condition'],
@@ -48,6 +48,7 @@ export const formatAllItems = (data: any) => {
 }
 
 export const formatItemDetail = (data: any) => {
+    console.log(data)
     const response: ItemDetail = {
         author,
         item: {

@@ -10,5 +10,5 @@ export interface Item {
     condition: string
     free_shipping: boolean
     sold_quantity?: number
-    description?: string
+    description: string
 }
