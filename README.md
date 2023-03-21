@@ -60,7 +60,7 @@ También puede ver errores en la consola.
 ### `yarn run start` | `npm run start` | `pnpm run start`
 
 Compila a JavaScript y Ejecuta la aplicación.
-La página no se cargar cuando realice cambios.
+La página no se recargar cuando realice cambios.
 
 ## Author
 
